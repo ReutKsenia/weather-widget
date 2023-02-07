@@ -8,7 +8,6 @@ export default createStore<State>({
   state: {
     locations: [],
     weather: [],
-    isFetching: false,
     newLocation: null,
   },
   getters,

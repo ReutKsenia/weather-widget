@@ -134,7 +134,11 @@ export default defineComponent({
 li {
   margin-bottom: 25px;
 }
+p {
+  margin: 0;
+}
 .weather_card {
+  box-sizing: border-box;
   padding: 20px 20px 0px 20px;
   height: 106px;
   display: flex;
@@ -177,10 +181,6 @@ li {
   color: #ffffff;
   margin-top: 4px;
 }
-/* .weather_card_column_description_feels {
-  @extend .weather_card_column_description;
-  margin-top: 8px;
-} */
 .description_card {
   height: 79px;
   background: rgba(255, 255, 255, 0.33);
@@ -189,6 +189,7 @@ li {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 .description_card_item {
   display: flex;

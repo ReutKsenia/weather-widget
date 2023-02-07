@@ -1,19 +1,24 @@
 <template>
-  <Navbar />
-  <router-view />
+  <div>
+    <navbar />
+    <Main></Main>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Navbar from './components/Navbar.vue'
+import Navbar from './components/Navbar.ce.vue'
+import Main from './views/Main.ce.vue'
+
 export default defineComponent({
   components: {
     Navbar,
+    Main,
   },
 })
 </script>
 
-<style lang="scss">
+<style>
 * {
   margin: 0;
   padding: 0;
@@ -25,18 +30,5 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>

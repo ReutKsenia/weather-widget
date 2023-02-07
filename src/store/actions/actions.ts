@@ -21,7 +21,6 @@ export default {
       })
       .catch((error) => {
         return error
-        // console.log(error)
       })
     return res
   },
@@ -37,19 +36,15 @@ export default {
     }
   },
 
-  async GET_ALL_WEATHER({ state, commit, dispatch }: any) {
-    commit('SET_IS_FETCHING', true)
+  async GET_ALL_WEATHER({ state, dispatch }: any) {
     for (let i = 0; i < state.locations.length; i++) {
       await dispatch('GET_WEATHER_FROM_API', state.locations[i].city)
     }
-    commit('SET_IS_FETCHING', false)
   },
 
-  async CHECK_LOCATION({ commit, dispatch }: any) {
+  async CHECK_LOCATION({ dispatch }: any) {
     // No locations in local storage
     if (!JSON.parse(localStorage.getItem('locations')!)) {
-      commit('SET_IS_FETCHING', true)
-
       // Fetch user location
       await dispatch('GET_USER_LOCATION').then((userLocation: any) => {
         let locations = [
@@ -60,12 +55,10 @@ export default {
           },
         ]
         dispatch('SET_LOCATIONS_IN_LOCAL_STORAGE', locations)
-
-        commit('SET_IS_FETCHING', false)
       })
     }
 
-    // Load weather data after checking locations
+    // Load weather after checking locations
     dispatch('GET_ALL_WEATHER')
   },
 }

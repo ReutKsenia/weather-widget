@@ -9,7 +9,7 @@
       :location="location"
       @click="$emit('remove', location)"
     />
-    <div v-else class="empty_list">You don't have any selected locations</div>
+    <div class="empty_list" v-else>You don't have any selected locations</div>
     <label>Add location</label>
     <my-input v-model="city" placeholder="City" />
     <my-button @click="addLocation" icon="plus" class="btn_add">Add</my-button>
@@ -20,7 +20,7 @@
 import { defineComponent } from 'vue'
 import { mapGetters } from 'vuex'
 import { Location } from '@/store/types'
-import LocationItem from './LocationItem.vue'
+import LocationItem from './LocationItem.ce.vue'
 
 export default defineComponent({
   name: 'SettingsForm',
@@ -44,6 +44,12 @@ export default defineComponent({
     },
     addLocation() {
       if (this.isUniqueLocation()) {
+        // To capital case
+        this.city = this.city
+          .split(' ')
+          .map((word) => `${word[0].toUpperCase()}${word.slice(1)}`)
+          .join(' ')
+
         this.$emit('add', this.city)
         this.city = ''
       } else alert('This location has already been added')
@@ -65,7 +71,9 @@ form {
     font-size: 32px;
     line-height: 44px;
     color: #2c3e50;
+    margin: 0;
   }
+
   label {
     font-family: 'Avenir';
     font-style: normal;
@@ -76,13 +84,14 @@ form {
     margin-top: 25px;
     margin-bottom: 12px;
   }
-
-  .btn_add {
-    margin-top: 12px;
-    align-self: center;
-  }
-  .empty_list {
-    align-self: center;
-  }
+}
+.btn_add {
+  margin-top: 12px;
+  align-self: center;
+}
+.empty_list {
+  align-self: center;
+  font-family: 'Avenir';
+  color: #2c3e50;
 }
 </style>

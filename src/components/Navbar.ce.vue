@@ -14,20 +14,20 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .navbar {
+  padding: 50px 0 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-nav {
-  padding: 50px 0 15px;
-}
-h1 {
-  font-family: 'Avenir';
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 44px;
-  color: #2c3e50;
-  margin-bottom: 15px;
+
+  h1 {
+    font-family: 'Avenir';
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 44px;
+    color: #2c3e50;
+    margin: 0;
+    margin-bottom: 15px;
+  }
 }
 </style>

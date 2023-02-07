@@ -1,7 +1,6 @@
 export interface State {
   locations: Array<Location>
   weather: Array<Weather>
-  isFetching: boolean
   newLocation: Omit<Location, 'id'> | null
 }
 

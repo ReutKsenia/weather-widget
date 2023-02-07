@@ -11,7 +11,7 @@
 <script lang="ts">
 import { Weather } from '@/store/types'
 import { defineComponent } from 'vue'
-import WeatherItem from './WeatherItem.vue'
+import WeatherItem from './WeatherItem.ce.vue'
 import type { PropType } from 'vue'
 
 export default defineComponent({
@@ -28,7 +28,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 ul {
   list-style-type: none;
   display: flex;

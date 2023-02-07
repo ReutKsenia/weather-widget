@@ -15,8 +15,8 @@
 import { Location, Weather } from '@/store/types'
 import { defineComponent } from 'vue'
 import { mapGetters, mapActions } from 'vuex'
-import SettingsForm from '../components/SettingsForm.vue'
-import WeatherList from '@/components/WeatherList.vue'
+import SettingsForm from '../components/SettingsForm.ce.vue'
+import WeatherList from '@/components/WeatherList.ce.vue'
 
 export default defineComponent({
   name: 'Main',
@@ -42,9 +42,11 @@ export default defineComponent({
       this.dialogVisible = true
     },
     addLocation(city: string) {
+      // Get response from api
       this.GET_WEATHER_FROM_API(city).then((err) => {
         if (err) alert('City not found')
         else {
+          // Add new location in array local storage
           let locations = this.locations
           locations.push({ id: Date.now().toString(), ...this.newLocation })
 

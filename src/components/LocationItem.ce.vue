@@ -1,5 +1,5 @@
 <template>
-  <li>
+  <li class="loc_item">
     <span>{{ location.city }}, {{ location.country }}</span>
     <button @click="$emit('remove', location)">
       <icon name="trash-2" size="20" color="#2c3e50" />
@@ -8,13 +8,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { Location } from '@/store/types'
+import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({
   name: 'LocationItem',
   props: {
     location: {
-      type: Object,
+      type: Object as PropType<Location>,
       required: true,
     },
   },
@@ -22,7 +23,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-li {
+.loc_item {
   padding: 11px 26px;
   width: 100%;
   height: 44px;
@@ -32,6 +33,7 @@ li {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
+  box-sizing: border-box;
 
   span {
     font-family: 'Avenir';
@@ -41,7 +43,6 @@ li {
     line-height: 22px;
     color: #2c3e50;
   }
-
   button {
     background-color: transparent;
     border: none;

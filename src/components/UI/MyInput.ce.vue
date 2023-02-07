@@ -30,5 +30,6 @@ export default defineComponent({
   font-size: 16px;
   line-height: 22px;
   color: #2c3e50;
+  box-sizing: border-box;
 }
 </style>
