@@ -11,7 +11,7 @@
     />
     <div class="empty_list" v-else>You don't have any selected locations</div>
     <label>Add location</label>
-    <my-input v-model="city" placeholder="City" />
+    <my-input v-model="city" placeholder="City" @enter="addLocation" />
     <my-button @click="addLocation" icon="plus" class="btn_add">Add</my-button>
   </form>
 </template>
@@ -43,14 +43,15 @@ export default defineComponent({
       )
     },
     addLocation() {
-      if (this.isUniqueLocation()) {
+      if (this.city.length == 0) alert('Enter location')
+      else if (this.isUniqueLocation()) {
         // To capital case
         this.city = this.city
           .split(' ')
           .map((word) => `${word[0].toUpperCase()}${word.slice(1)}`)
           .join(' ')
 
-        this.$emit('add', this.city)
+        this.$emit('add', [this.city])
         this.city = ''
       } else alert('This location has already been added')
     },

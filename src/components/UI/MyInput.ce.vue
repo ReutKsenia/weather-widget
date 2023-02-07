@@ -1,5 +1,13 @@
 <template>
-  <input :value="modelValue" @input="updateInput" class="input" type="text" />
+  <input
+    @submit.stop
+    @submit.prevent
+    :value="modelValue"
+    @input="updateInput"
+    class="input"
+    type="text"
+    @keypress="pressEnter"
+  />
 </template>
 
 <script lang="ts">
@@ -13,6 +21,13 @@ export default defineComponent({
   methods: {
     updateInput(event: any) {
       this.$emit('update:modelValue', event.target.value)
+    },
+    pressEnter(event: any) {
+      if (event.keyCode == 13) {
+        event.stopPropagation()
+        event.preventDefault()
+        this.$emit('enter', event.target.value)
+      }
     },
   },
 })
